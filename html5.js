@@ -1,1 +1,1 @@
-console.log('test');
+throw new Error('broken install!');
