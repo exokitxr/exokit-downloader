@@ -2,7 +2,7 @@
   "name": "exokit-downloader",
   "version": "0.0.1",
   "description": "Exokit npm package that downloads the latest release",
-  "main": "index.js",
+  "main": "downloader.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/modulesio/exokit-downloader/issues"
   },
-  "homepage": "https://github.com/modulesio/exokit-downloader#readme"
+  "homepage": "https://github.com/modulesio/exokit-downloader#readme",
+  "dependencies": {
+    "follow-redirects": "^1.4.1",
+    "tar-fs": "^1.16.0",
+    "unzip": "^0.1.11"
+  }
 }
