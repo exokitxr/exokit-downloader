@@ -49,9 +49,9 @@ https.get(u, res => {
             https.get(u, res => {
               if (res.statusCode >= 200 && res.statusCode < 300) {
                 const {tag_name} = release;
-                const bar = new progress(`Downloading ${requiredReleaseName} ${tag_name} [:bar] :rate bps :percent :etas`, {
-                  complete: '=',
-                  incomplete: ' ',
+                const bar = new progress(`[:bar] ${requiredReleaseName} ${tag_name} :rate bps :percent :etas`, {
+                  complete: '█',
+                  incomplete: '.',
                   width: 20,
                   total: parseInt(res.headers['content-length'], 10),
                 });
