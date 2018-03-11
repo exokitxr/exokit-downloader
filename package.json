@@ -4,6 +4,7 @@
   "description": "Exokit npm package that downloads the latest release",
   "main": "downloader.js",
   "scripts": {
+    "install": "downloader.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
