@@ -6,6 +6,7 @@ const zlib = require('zlib');
 const os = require('os');
 const unzip = require('unzip');
 const tarFs = require('tar-fs');
+const progress = require('progress');
 
 const userAgent = 'exokit-downloader';
 
@@ -40,9 +41,6 @@ https.get(u, res => {
           const {assets} = release;
           const asset = assets.find(asset => asset.name === requiredReleaseName);
           if (asset) {
-            const {tag_name} = release;
-            process.stdout.write(`Downloading ${requiredReleaseName} ${tag_name}...`);
-
             const {browser_download_url} = asset;
             const u = url.parse(browser_download_url);
             u.headers = {
@@ -50,15 +48,32 @@ https.get(u, res => {
             };
             https.get(u, res => {
               if (res.statusCode >= 200 && res.statusCode < 300) {
+                const {tag_name} = release;
+                const bar = new progress(`Downloading ${requiredReleaseName} ${tag_name} [:bar] :rate bps :percent :etas`, {
+                  complete: '=',
+                  incomplete: ' ',
+                  width: 20,
+                  total: parseInt(res.headers['content-length'], 10),
+                });
+
                 if (/\.zip$/.test(requiredReleaseName)) {
                   res.pipe(unzip.Extract({
                     path: __dirname,
-                  }));
+                  }))
+                    .on('end', () => {
+                      console.log();
+                    });
+                  res.on('data', d => {
+                    bar.tick(d.length);
+                  });
                 } else if (/\.tar\.gz$/.test(requiredReleaseName)) {
                   res.pipe(zlib.createUnzip()).pipe(tarFs.extract(__dirname))
                     .on('end', () => {
-                      console.log('done!');
+                      console.log();
                     });
+                  res.on('data', d => {
+                    bar.tick(d.length);
+                  });
                 } else {
                   throw new Error('unknown file format for file: ' + requiredReleaseName);
                 }
