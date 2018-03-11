@@ -3,6 +3,7 @@
   "version": "0.0.75",
   "description": "Exokit npm package that downloads the latest release",
   "main": "downloader.js",
+  "bin": "./html5.js",
   "scripts": {
     "postinstall": "node downloader.js",
     "test": "echo \"Error: no test specified\" && exit 1"
