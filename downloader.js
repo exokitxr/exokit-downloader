@@ -4,7 +4,7 @@ const url = require('url');
 const {https} = require('follow-redirects');
 const zlib = require('zlib');
 const os = require('os');
-const unzip = require('unzip');
+const unzipper = require('unzipper');
 const tarFs = require('tar-fs');
 const progress = require('progress');
 
@@ -57,7 +57,7 @@ https.get(u, res => {
                 });
 
                 if (/\.zip$/.test(requiredReleaseName)) {
-                  res.pipe(unzip.Extract({
+                  res.pipe(unzipper.Extract({
                     path: __dirname,
                   }))
                     .on('end', () => {
