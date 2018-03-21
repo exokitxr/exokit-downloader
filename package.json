@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/modulesio/exokit-downloader.git"
+    "url": "git+https://github.com/webmixedreality/exokit-downloader.git"
   },
   "author": "Avaer Kazmer <a@modules.io>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/modulesio/exokit-downloader/issues"
+    "url": "https://github.com/webmixedreality/exokit-downloader/issues"
   },
-  "homepage": "https://github.com/modulesio/exokit-downloader#readme",
+  "homepage": "https://github.com/webmixedreality/exokit-downloader#readme",
   "dependencies": {
     "follow-redirects": "^1.4.1",
     "progress": "^2.0.0",
