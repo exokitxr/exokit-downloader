@@ -28,9 +28,9 @@ https.get(u, res => {
       const platform = os.platform();
       const requiredReleaseName = (() => {
         switch (platform) {
-          case 'win32': return 'exokit-windows.zip';
-          case 'linux': return 'exokit-linux.tar.gz';
-          case 'darwin': return 'exokit-macos.tar.gz';
+          case 'win32': return 'exokit-windows-full.zip';
+          case 'linux': return 'exokit-linux-full.tar.gz';
+          case 'darwin': return 'exokit-macos-full.tar.gz';
           default: return null;
         }
       })();
