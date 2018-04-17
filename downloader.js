@@ -41,10 +41,6 @@ https.get(u, res => {
           const {assets} = release;
           const asset = assets.find(asset => asset.name === requiredReleaseName);
           if (asset) {
-            const _done = () => {
-              console.log(`Done! Type ${platform !== 'win32' ? 'exokit' : 'exokit-win'} to start.`);
-            };
-
             const {browser_download_url} = asset;
             const u = url.parse(browser_download_url);
             u.headers = {
@@ -66,8 +62,6 @@ https.get(u, res => {
                   }))
                     .on('end', () => {
                       console.log();
-
-                      _done();
                     });
                   res.on('data', d => {
                     bar.tick(d.length);
@@ -76,8 +70,6 @@ https.get(u, res => {
                   res.pipe(zlib.createUnzip()).pipe(tarFs.extract(__dirname))
                     .on('end', () => {
                       console.log();
-
-                      _done();
                     });
                   res.on('data', d => {
                     bar.tick(d.length);
