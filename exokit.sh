@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo exokit start script posix
+echo exokit start script
