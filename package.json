@@ -1,6 +1,6 @@
 {
   "name": "exokit",
-  "version": "0.0.84",
+  "version": "0.0.85",
   "description": "Exokit npm package that downloads the latest release",
   "main": "downloader.js",
   "bin": {
