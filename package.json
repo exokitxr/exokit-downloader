@@ -4,7 +4,8 @@
   "description": "Exokit npm package that downloads the latest release",
   "main": "downloader.js",
   "bin": {
-    "exokit": "./exokit.sh"
+    "exokit": "./exokit.sh",
+    "exokit-win": "./exokit.cmd"
   },
   "scripts": {
     "postinstall": "node downloader.js",
